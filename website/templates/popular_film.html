@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{%block title%}popular film {%endblock%}
+
+{%block content%}
+<h1 class="text-center align-items-center">Random Popular Film</h1>
+<div class="text-center mt-3">
+    <h2>{{ title }}</h2>
+    <img src="{{ picture }}" alt="{{ title }}" class="img-fluid mb-3" style="max-width: 300px;">
+    <p class="mx-auto text-center" style="max-width: 600px; line-height: 1.5; color: #f8f9fa;">
+        {{ desc }}
+    </p>
+    <form method="get">
+        <input type="hidden" name="page" value="{{ page }}">
+        <input type="hidden" name="c" value="{{ c|add:'1' }}">
+        <button type="submit" class="btn btn-dark mt-2">Next Film</button>
+    </form>
+
+</div>
+
+
+
+{%endblock%}
