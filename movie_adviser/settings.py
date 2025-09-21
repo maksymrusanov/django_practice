@@ -56,3 +56,4 @@ DATABASES = {
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
+print("ALLOWED_HOSTS:", ALLOWED_HOSTS)
