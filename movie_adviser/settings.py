@@ -43,7 +43,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'movie-adviser.wsgi.application'
+WSGI_APPLICATION = 'movie_adviser.wsgi.application'
 
 # --- База данных по умолчанию (SQLite) ---
 DATABASES = {
