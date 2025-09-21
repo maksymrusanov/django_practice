@@ -1,18 +1,12 @@
 import os
 from pathlib import Path
-import dj_database_url
 
-# --- Базовые настройки ---
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Безопасные секреты через переменные окружения
 SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-secret')
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
-
-# Разрешённые хосты
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
 
-# --- Приложения Django ---
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -51,35 +45,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'myproject.wsgi.application'
 
-# --- База данных ---
+# --- База данных по умолчанию (SQLite) ---
 DATABASES = {
-    'default': dj_database_url.parse(
-        os.environ.get('DATABASE_URL', f"sqlite:///{BASE_DIR / 'db.sqlite3'}")
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
+    }
 }
 
-# --- Пароли ---
-AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
-    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
-]
-
-# --- Локализация ---
-LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
-USE_I18N = True
-USE_TZ = True
-
-# --- Статика ---
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
-
-# --- Медиа ---
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "media"
-
-# --- Безопасность ---
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO',
-                           'https')  # для продакшн за прокси
