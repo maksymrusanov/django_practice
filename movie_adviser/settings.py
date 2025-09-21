@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'fallback-secret')
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = [
-    "*", "djangopractice-production.up.railway.app", "127.0.0.1", "localhost"]
+    "djangopractice-production.up.railway.app", "127.0.0.1", "localhost"]
 
 
 INSTALLED_APPS = [
