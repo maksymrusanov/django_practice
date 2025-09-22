@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def main(request):
+def popular_film(request):
     c = int(request.GET.get('c', random.randint(0, 18)))
     page = int(request.GET.get('page', 1) or c)
 
@@ -61,7 +61,7 @@ def top_rated(request):
             }
             for movie in response['results']
         ],
-        'page': page  # передаём отдельно, вне списка фильмов
+        'page': page
     }
 
     submitbutton = request.POST.get('Submit')
